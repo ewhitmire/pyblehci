@@ -18,6 +18,7 @@ class BLEBuilder():
 	#dictionaries	
 	#opcodes for command packets
 	opcodes = 	{"fd8a":'GATT_ReadCharValue',
+				 "fd8c":'GATT_ReadLongCharValues',
 				 "fd8e":'GATT_ReadMultipleCharValues',
 				 "fd92":'GATT_WriteCharValue',
 				 "fd96":'GATT_WriteLongCharValue',
@@ -37,6 +38,10 @@ class BLEBuilder():
 	hci_cmds = 	{"fd8a":
 					[{'name':'conn_handle',	'len':2,	'default':'\x00\x00'},
 					 {'name':'handle',		'len':2,	'default':None}],
+				"fd8c":
+					[{'name':'conn_handle',	'len':2,	'default':'\x00\x00'},
+					 {'name':'handle',		'len':2,	'default':None},
+					 {'name':'offset',		'len':2,	'default':None}],
 				"fd8e":
 					[{'name':'conn_handle',	'len':2,	'default':'\x00\x00'},
 					 {'name':'handles',		'len':None,	'default':None}],
@@ -77,7 +82,8 @@ class BLEBuilder():
 					 {'name':'addr_type_peer','len':1,	'default':'\x00'},
 					 {'name':'peer_addr',	'len':6,	'default':None}],
 				"fe0a":
-					[{'name':'conn_handle',	'len':2,	'default':'\x00\x00'}],
+					[{'name':'conn_handle',	'len':2,	'default':'\x00\x00'},
+					 {'name':'reason', 'len':1,			'default':'\x13'}],
 				"fe30":
 				 	[{'name':'param_id',	'len':1,	'default':None},
 				 	 {'name':'param_value',	'len':2,	'default':None}],

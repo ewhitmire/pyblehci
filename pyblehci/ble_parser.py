@@ -27,6 +27,7 @@ class BLEParser(threading.Thread):
 	#dictionaries	
 	#opcodes for command packets
 	opcodes = 	{"fd8a":'GATT_ReadCharValue',
+				 "fd8c":'GATT_ReadLongCharValues',
 				 "fd8e":'GATT_ReadMultipleCharValues',
 				 "fd92":'GATT_WriteCharValue',
 				 "fd96":'GATT_WriteLongCharValue',
@@ -70,6 +71,12 @@ class BLEParser(threading.Thread):
 					 		ble._parse_read_results(original['results']))]},
 				"050b":
 					{'name':'ATT_ReadRsp',
+					 'structure':
+					 	[{'name':'conn_handle',	'len':2},
+					 	 {'name':'pdu_len',		'len':1},
+					 	 {'name':'value',		'len':None}]},
+				"050d":
+					{'name':'ATT_ReadBlobRsp',
 					 'structure':
 					 	[{'name':'conn_handle',	'len':2},
 					 	 {'name':'pdu_len',		'len':1},
@@ -132,6 +139,13 @@ class BLEParser(threading.Thread):
 					 'structure':
 					 	[{'name':'conn_handle',	'len':2},
 					 	 {'name':'reason',		'len':1}]},
+				"0607":
+					{'name':'GAP_LinkParamUpdate',
+					 'structure':
+					 	[{'name':'conn_handle',		'len':2},
+					 	 {'name':'connInterval',	'len':2},
+					 	 {'name':'connLatency',		'len':2},
+					 	 {'name':'connTimeout',		'len':2}]},
 				"067f":
 					{'name':'GAP_HCI_ExtensionCommandStatus',
 					 'structure':
