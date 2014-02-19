@@ -8,7 +8,7 @@
 import collections
 import serial
 
-class BLEBuilder():
+class BLEBuilder(object):
 	"""
 	A builder for command packets as defined by the the Texas Instruments 
 	Bluetooth Low Energy Host-Controller-Interface (HCI).

@@ -142,8 +142,8 @@ class BLEParser(threading.Thread):
 				"0607":
 					{'name':'GAP_LinkParamUpdate',
 					 'structure':
-					 	[{'name':'conn_handle',	'len':2},
-					 	 {'name':'connInterval',		'len':2},
+					 	[{'name':'conn_handle',		'len':2},
+					 	 {'name':'connInterval',	'len':2},
 					 	 {'name':'connLatency',		'len':2},
 					 	 {'name':'connTimeout',		'len':2}]},
 				"067f":
