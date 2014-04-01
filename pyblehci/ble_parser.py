@@ -298,7 +298,7 @@ class BLEParser(threading.Thread):
 			except AttributeError:
 				raise NotImplementedError("Error with Attribute")
 			except KeyError:
-				print data.encode('hex')
+				print(data.encode('hex'))
 				raise KeyError("Unrecognized response packet with event" +
 					" type {0}".format(data[3:5][::-1]))
 
